@@ -12,6 +12,7 @@ import { framerMotionConfig } from "../config";
 import { Avatar } from "./Avatar";
 import { Office } from "./Office";
 import * as THREE from "three";
+import { Projects } from "./Projects";
 
 
 
@@ -49,9 +50,7 @@ export const Experience = (props) => {
     let curSection=Math.floor(data.scroll.current * data.pages);
 
 
-    if(curSection>3){
-      curSection=3
-    }
+    
 
     if(curSection!==section){
       setSection(curSection)
@@ -65,7 +64,7 @@ export const Experience = (props) => {
     // const position = new THREE.Vector3();
     // characterContainerAboutRef.current.getWorldPosition(position);
     // // console.log([position.x, position.y, position.z]);
-    // const quaternion = new THREE.Quaternion();
+    const quaternion = new THREE.Quaternion();
     // characterContainerAboutRef.current.getWorldQuaternion(quaternion);
     // const euler = new THREE.Euler();
     // euler.setFromQuaternion(quaternion, "XYZ");
@@ -99,19 +98,18 @@ export const Experience = (props) => {
           },
           2:{
             x:-2,
-            y: -viewport.height*2 + 1.2,
+            y: -viewport.height*2 + 0.2,
             z:0,
-            rotateX:0,
-            rotateY:Math.PI/2,
-            rotateZ:0,
+            rotateX:5.2,
+            rotateY:0,
+            rotateZ:1,
+            scale:1
           },
           3:{
             y:-viewport.height*3 + 1.2,
-            x:0,
+            x:2,
             z:0,
-            rotateX:0,
-            rotateY:Math.PI/4,
-            rotateZ:0,
+            
           }
         }}
         >
@@ -147,6 +145,7 @@ export const Experience = (props) => {
           z: section === 1 ? 0 : -10,
           y: section === 1 ? -viewport.height : -1.5,
         }}
+        
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
         <Float>
@@ -187,6 +186,7 @@ export const Experience = (props) => {
         </Float>
         
       </motion.group>
+      <Projects />
     </>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useAtom } from 'jotai'
+import { currentProjectAtom } from './Projects'
 
 const skills=[
     {
@@ -74,9 +76,7 @@ export const Interface=()=>{
             <AboutSection/>
             <SkillsSection />
             
-            <Section>
-                <h1>Project</h1>
-            </Section>
+            <ProjectsSection />
             <Section>
                 <ContactSection/>
             </Section>
@@ -142,11 +142,11 @@ const SkillsSection=()=>{
     return(
         <Section>
             <motion.div whileInView={"visible"}>
-                <h2 className="text-5xl font-bold">Skills</h2>
+                <h2 className="text-2xl font-bold">Skills</h2>
                 <div className="mt-8 space-y-4">
                     {skills.map((skill, index)=>(
                         <div className="w-64" key={index}>
-                            <motion.h3 className="text-xl font-bold text-gray-800"
+                            <motion.h3 className="text-md font-bold text-gray-800"
                                 initial={{
                                     opacity:0,
                                 }}
@@ -160,7 +160,7 @@ const SkillsSection=()=>{
                                     }
                                 }}
                             >{skill.title}</motion.h3>
-                            <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                            <div className="h-3 w-full bg-gray-200 rounded-full mt-2">
                                 <motion.div 
                                 className="h-full bg-indigo-500 rounded-full" 
                                 style={{ width: `${skill.level}%` }}
@@ -183,11 +183,11 @@ const SkillsSection=()=>{
                         </div>
                     ))}
                 </div>
-                <h2 className="text-5xl font-bold mt-10">Languages</h2>
+                <h2 className="text-2xl font-bold mt-10">Languages</h2>
                 <div className="mt-8 space-y-4">
                     {languages.map((lng, index)=>(
                         <div className="w-64" key={index}>
-                        <motion.h3 className="text-xl font-bold text-gray-800"
+                        <motion.h3 className="text-md font-bold text-gray-800"
                             initial={{
                                 opacity:0,
                             }}
@@ -229,6 +229,37 @@ const SkillsSection=()=>{
         </Section>
     )
 }
+
+
+const ProjectsSection=()=>{
+    const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
+    const nextProject = () => {
+        setCurrentProject((currentProject + 1) % projects.length);
+    }
+
+    const previousProject = () => {
+        setCurrentProject((currentProject - 1 + projects.length) % projects.length);
+    }
+
+    return(
+        <Section >
+            <div className='flex w-full h-full gap-8 items-center justify-center mt-80 text-cyan-200 animate-fade'>
+                <button className='hover:text-indigo-600 transition-colors'
+                    onClick={previousProject}
+                >
+                    ← Previous
+                </button>
+                <h2 className='text-5xl font-bold'>Projects</h2>
+                <button className='hover:text-indigo-600 transition-colors'>
+                    Next →
+                </button>
+            </div>
+        </Section>
+    )
+}
+
+
+
 
 const ContactSection=()=>{
     return(
