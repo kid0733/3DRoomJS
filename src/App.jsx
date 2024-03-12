@@ -6,6 +6,7 @@ import { ScrollManager } from "./components/ScrollManager";
 import { useState, useEffect } from "react";
 import { Menu } from "./components/Menu";
 import { MotionConfig } from "framer-motion";
+import { Leva } from "leva";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         </Canvas>
         <Menu onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened}/>
       </MotionConfig>
+      <Leva hidden/>
     </>
   );
 }
