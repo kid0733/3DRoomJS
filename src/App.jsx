@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Menu } from "./components/Menu";
 import { MotionConfig } from "framer-motion";
 import { Leva } from "leva";
+import { Cursor } from "./components/Cursor";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           <ScrollControls pages={4} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection}/>
             <Scroll>
-              <Experience section={section}/>  
+              <Experience section={section} menuOpened={menuOpened}/>  
             </Scroll>
             <Scroll html>
               <Interface />
@@ -40,6 +41,7 @@ function App() {
           </ScrollControls>
         </Canvas>
         <Menu onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened}/>
+        <Cursor />
       </MotionConfig>
       <Leva hidden/>
     </>

@@ -58,7 +58,7 @@ export function Avatar(props) {
   }, [wireframe]);
 
   return (
-    <group {...props} ref={group} dispose={null}>
+    <group {...props} ref={group} dispose={null} >
       <group>
         <primitive object={nodes.Hips} />
         <skinnedMesh

@@ -16,20 +16,20 @@ export const Experience = (props) => {
   const { viewport } = useThree();
 
   const cameraPositionX = useMotionValue();
-  const cameraLookAtX = useMotionValue();
+  // const cameraLookAtX = useMotionValue();
 
   useEffect(() => {
     animate(cameraPositionX, menuOpened ? -5 : 0, {
       ...framerMotionConfig,
     });
-    animate(cameraLookAtX, menuOpened ? 5 : 0, {
-      ...framerMotionConfig,
-    });
+    // animate(cameraLookAtX, menuOpened ? 5 : 0, {
+    //   ...framerMotionConfig,
+    // });
   }, [menuOpened]);
 
   useFrame((state) => {
     state.camera.position.x = cameraPositionX.get();
-    state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+    // state.camera.lookAt(cameraLookAtX.get(), 0, 0);
   });
 
   return (
@@ -91,9 +91,9 @@ export const Experience = (props) => {
             />
           </mesh>
         </Float>
-        <group scale={[2.5, 2.5, 2.5]} position-y={-2.5} rotation-z={50} rotation-x={92.6}>
+        <motion.group scale={[2.5, 2.5, 2.5]} position-y={-2.5} rotation-x={92.6}   >
           <Avatar animation={section === 0 ? "Falling" : "Standing"} />
-        </group>
+        </motion.group>
       </motion.group>
     </>
   );
