@@ -252,7 +252,7 @@ const ProjectsSection = () => {
 
     return (
         <Section >
-            <div className='flex w-full h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade'>
+            <div className='flex w-screen h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade mx-auto'>
                 <button className='hover:text-indigo-600 transition-colors'
                     onClick={previousProject}
                 >
