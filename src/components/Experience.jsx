@@ -65,7 +65,7 @@ export const Experience = (props) => {
     // const position = new THREE.Vector3();
     // characterContainerAboutRef.current.getWorldPosition(position);
     // // console.log([position.x, position.y, position.z]);
-    const quaternion = new THREE.Quaternion();
+    // const quaternion = new THREE.Quaternion();
     // characterContainerAboutRef.current.getWorldQuaternion(quaternion);
     // const euler = new THREE.Euler();
     // euler.setFromQuaternion(quaternion, "XYZ");
@@ -100,7 +100,7 @@ export const Experience = (props) => {
           },
           2:{
             x:-2,
-            y: -viewport.height*2 + 0.2,
+            y: -viewport.height*2 + -2.2,
             z:0,
             rotateX:5.2,
             rotateY:0,
@@ -108,10 +108,13 @@ export const Experience = (props) => {
             scale:1
           },
           3:{
-            y:-viewport.height*3 + 1.2,
-            x:2,
-            z:0,
-            
+            y:-viewport.height*3 + 0,
+            x:1,
+            z:5,
+            rotateX:-1.6,
+            rotateY:0,
+            rotateZ:0,
+            scale:2
           }
         }}
         >

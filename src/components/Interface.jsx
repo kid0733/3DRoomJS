@@ -48,10 +48,12 @@ const languages=[
 
 
 const Section=(props)=>{
-    const {children}=props
+    const {children, mobileTop}=props
 
     return(
-        <motion.section className={`h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center`}
+        <motion.section className={`h-screen w-screen p-5 pt-0 max-w-screen-xl mx-auto flex flex-col items-start 
+        ${mobileTop ? "sm:justify-start" : "justify-center"}
+        `}
         initial={{
             opacity:0,
             y: 50,
@@ -77,7 +79,9 @@ export const Interface=(props)=>{
             <AboutSection setSection={setSection}/>
             <SkillsSection />
             
-            <ProjectsSection />
+            <div className='mt-24'>
+                <ProjectsSection />
+            </div>
             <Section>
                 <ContactSection/>
             </Section>
@@ -88,8 +92,8 @@ export const Interface=(props)=>{
 const AboutSection=(props)=>{
     const {setSection}=props
     return(
-        <Section>
-        <h1 className='text-6xl font-extrabold leading-snug mt-64'>
+        <Section mobileTop>
+        <h1 className='text-5xl font-extrabold leading-snug mt-44 '>
             Hi, I'm
             <br />
             <span className='bg-white px-1 italic'>Siddhant Singh Karki</span>

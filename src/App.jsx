@@ -13,11 +13,25 @@ import { Cursor } from "./components/Cursor";
 function App() {
   const [section,setSection]=useState(0)
   const [menuOpened, setMenuOpened] = useState(false);
+  const [fov, setFov] = useState(window.innerWidth < 768 ? 75 : 42);
+  useEffect(() => {
+    const handleResize = () => {
+      console.log("Window resized");
+      setFov(window.innerWidth < 768 ? 75 : 42);
+    };
+  
+    window.addEventListener("resize", handleResize);
+  
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   useEffect(() => {
     setMenuOpened(false)
   }, [section])
   
-
   return (
     <>
     <MotionConfig transition={{
@@ -27,7 +41,7 @@ function App() {
       damping:50,
       restDelta:0.001,
     }}>
-        <Canvas shadows camera={{ position: [0, 3, 10], fov: 42 }}>
+        <Canvas shadows camera={{ position: [0, 3, 10], fov: fov }}>
           <color attach="background" args={["#658ef0"]} />
           <ScrollControls pages={4} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection}/>
