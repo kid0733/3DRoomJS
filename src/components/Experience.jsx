@@ -13,6 +13,7 @@ import { Avatar } from "./Avatar";
 import { Office } from "./Office";
 import * as THREE from "three";
 import { Projects } from "./Projects";
+import { Background } from "./Background";
 
 
 
@@ -73,6 +74,7 @@ export const Experience = (props) => {
 
   return (
     <>
+      <Background />
       <motion.group 
         position={[1.9900249993622774, 0.07919999999999999, 2.5099750006377226]}
         rotation={[-1.7221121619763993, 0.14961266863604114, 2.2259639469392147]}

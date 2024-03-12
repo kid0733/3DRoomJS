@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
-import { currentProjectAtom } from './Projects'
+import { currentProjectAtom, projects } from './Projects'
 
 const skills=[
     {
@@ -70,10 +70,11 @@ const Section=(props)=>{
     )
 }
 
-export const Interface=()=>{
+export const Interface=(props)=>{
+    const {setSection}=props
     return(
         <div className='flex flex-col items-center w-full'>
-            <AboutSection/>
+            <AboutSection setSection={setSection}/>
             <SkillsSection />
             
             <ProjectsSection />
@@ -84,7 +85,8 @@ export const Interface=()=>{
     )
 }
 
-const AboutSection=()=>{
+const AboutSection=(props)=>{
+    const {setSection}=props
     return(
         <Section>
         <h1 className='text-6xl font-extrabold leading-snug mt-64'>
@@ -114,6 +116,7 @@ const AboutSection=()=>{
             Crafting sweetness into digital magic
         </motion.p>
         <motion.button 
+            onClick={()=>setSection(3)}
             className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
             initial={{
                 opacity:0,
@@ -233,13 +236,14 @@ const SkillsSection=()=>{
 
 const ProjectsSection=()=>{
     const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
+
     const nextProject = () => {
         setCurrentProject((currentProject + 1) % projects.length);
-    }
+    };
 
     const previousProject = () => {
         setCurrentProject((currentProject - 1 + projects.length) % projects.length);
-    }
+    };
 
     return(
         <Section >
@@ -250,7 +254,10 @@ const ProjectsSection=()=>{
                     ← Previous
                 </button>
                 <h2 className='text-5xl font-bold'>Projects</h2>
-                <button className='hover:text-indigo-600 transition-colors'>
+                <button 
+                className='hover:text-indigo-600 transition-colors'
+                onClick={nextProject}
+                >
                     Next →
                 </button>
             </div>
