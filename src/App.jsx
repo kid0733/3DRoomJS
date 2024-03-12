@@ -8,11 +8,13 @@ import { Menu } from "./components/Menu";
 import { MotionConfig } from "framer-motion";
 import { Leva } from "leva";
 import { Cursor } from "./components/Cursor";
+import { LoadingScreen } from "./components/LoadingScreen";
 
 
 function App() {
   const [section,setSection]=useState(0)
   const [menuOpened, setMenuOpened] = useState(false);
+  const [started, setStarted] = useState(false);
   const [fov, setFov] = useState(window.innerWidth < 768 ? 75 : 42);
   useEffect(() => {
     const handleResize = () => {
@@ -34,6 +36,7 @@ function App() {
   
   return (
     <>
+    <LoadingScreen started={started} setStarted={setStarted}/>
     <MotionConfig transition={{
       type:"spring",
       mass:5,
