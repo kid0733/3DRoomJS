@@ -53,8 +53,8 @@ export const Experience = (props) => {
 
     
 
-    if(curSection!==section){
-      setSection(curSection)
+    if (curSection > 3) {
+      curSection = 3;
     }
 
 
@@ -107,6 +107,15 @@ export const Experience = (props) => {
             rotateZ:1,
             scale:1
           },
+          3:{
+            y:-viewport.height*3 + 0,
+            x:1,
+            z:5,
+            rotateX:-1.6,
+            rotateY:0,
+            rotateZ:0,
+            scale:1.75
+          }
         }}
         >
         <Avatar animation={characterAnimation} />

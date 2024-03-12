@@ -1,7 +1,9 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useAtom } from 'jotai'
-import { currentProjectAtom, projects } from './Projects'
+import React from "react";
+import { motion } from "framer-motion";
+import { useAtom } from "jotai";
+import { currentProjectAtom, projects } from "./Projects";
+import { ValidationError,useForm } from "@formspree/react";
+
 
 const skills = [
     {
@@ -24,7 +26,7 @@ const skills = [
         title: "3D Modelling",
         level: "40",
     },
-]
+];
 const languages = [
     {
         title: "3D Modelling",
@@ -42,16 +44,14 @@ const languages = [
         title: "3D Modelling",
         level: "40",
     },
-]
-
-
-
+];
 
 const Section = (props) => {
-    const { children, mobileTop } = props
+    const { children, mobileTop } = props;
 
     return (
-        <motion.section className={`h-screen w-screen p-5 pt-0 max-w-screen-xl mx-auto flex flex-col items-start 
+        <motion.section
+            className={`h-screen w-screen p-5 pt-0 max-w-screen-xl flex flex-col items-start 
         ${mobileTop ? "sm:justify-start" : "justify-center"}
         `}
             initial={{
@@ -63,56 +63,54 @@ const Section = (props) => {
                 y: 0,
                 transition: {
                     duration: 1,
-                    delay: 0.6
+                    delay: 0.6,
                 },
             }}
         >
             {children}
         </motion.section>
-    )
-}
+    );
+};
 
 export const Interface = (props) => {
-    const { setSection } = props
+    const { setSection } = props;
     return (
-        <div className='flex flex-col items-center w-full'>
+        <div className="flex flex-col items-center w-full">
             <AboutSection setSection={setSection} />
             <SkillsSection />
 
-            <div className='mt-24'>
+            <div className="mt-24">
                 <ProjectsSection />
             </div>
             <Section>
                 <ContactSection />
             </Section>
         </div>
-    )
-}
+    );
+};
 
 const AboutSection = (props) => {
-    const { setSection } = props
+    const { setSection } = props;
     return (
         <Section mobileTop>
-            <h1 className='text-5xl font-extrabold leading-snug mt-44 '>
+            <h1 className="text-5xl font-extrabold leading-snug mt-44 ">
                 Hi, I'm
                 <br />
-                <span className='bg-white px-1 italic'>Siddhant Singh Karki</span>
+                <span className="bg-white px-1 italic">Siddhant Singh Karki</span>
             </h1>
             <motion.p
-                className='text-lg text-gray-600 mt-4'
+                className="text-lg text-gray-600 mt-4"
                 initial={{
                     opacity: 0,
                     y: 25,
                 }}
-                whileInView={
-                    {
-                        opacity: 1,
-                        y: 0,
-                    }
-                }
+                whileInView={{
+                    opacity: 1,
+                    y: 0,
+                }}
                 transition={{
                     duration: 1,
-                    delay: 1.5
+                    delay: 1.5,
                 }}
             >
                 Sugar-coated code:
@@ -126,12 +124,10 @@ const AboutSection = (props) => {
                     opacity: 0,
                     y: 25,
                 }}
-                whileInView={
-                    {
-                        opacity: 1,
-                        y: 0,
-                    }
-                }
+                whileInView={{
+                    opacity: 1,
+                    y: 0,
+                }}
                 transition={{
                     duration: 1,
                     delay: 2,
@@ -140,10 +136,8 @@ const AboutSection = (props) => {
                 Contact Me
             </motion.button>
         </Section>
-    )
-}
-
-
+    );
+};
 
 const SkillsSection = () => {
     return (
@@ -153,7 +147,8 @@ const SkillsSection = () => {
                 <div className="mt-8 space-y-4">
                     {skills.map((skill, index) => (
                         <div className="w-64" key={index}>
-                            <motion.h3 className="text-md font-bold text-gray-800"
+                            <motion.h3
+                                className="text-md font-bold text-gray-800"
                                 initial={{
                                     opacity: 0,
                                 }}
@@ -164,27 +159,28 @@ const SkillsSection = () => {
                                     transition: {
                                         duration: 1,
                                         delay: 1 + index * 0.2,
-                                    }
+                                    },
                                 }}
-                            >{skill.title}</motion.h3>
+                            >
+                                {skill.title}
+                            </motion.h3>
                             <div className="h-3 w-full bg-gray-200 rounded-full mt-2">
                                 <motion.div
                                     className="h-full bg-indigo-500 rounded-full"
                                     style={{ width: `${skill.level}%` }}
                                     initial={{
                                         scaleX: 0,
-                                        originX: 0
+                                        originX: 0,
                                     }}
                                     variants={{
                                         visible: {
                                             scaleX: 1,
                                             transition: {
                                                 duration: 1,
-                                                delay: 1 + index * 0.2
-                                            }
-                                        }
+                                                delay: 1 + index * 0.2,
+                                            },
+                                        },
                                     }}
-
                                 />
                             </div>
                         </div>
@@ -194,7 +190,8 @@ const SkillsSection = () => {
                 <div className="mt-8 space-y-4">
                     {languages.map((lng, index) => (
                         <div className="w-64" key={index}>
-                            <motion.h3 className="text-md font-bold text-gray-800"
+                            <motion.h3
+                                className="text-md font-bold text-gray-800"
                                 initial={{
                                     opacity: 0,
                                 }}
@@ -205,38 +202,37 @@ const SkillsSection = () => {
                                     transition: {
                                         duration: 1,
                                         delay: 1 + index * 0.2,
-                                    }
+                                    },
                                 }}
-                            >{lng.title}</motion.h3>
+                            >
+                                {lng.title}
+                            </motion.h3>
                             <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                                 <motion.div
                                     className="h-full bg-indigo-500 rounded-full"
                                     style={{ width: `${lng.level}%` }}
                                     initial={{
                                         scaleX: 0,
-                                        originX: 0
+                                        originX: 0,
                                     }}
                                     variants={{
                                         visible: {
                                             scaleX: 1,
                                             transition: {
                                                 duration: 1,
-                                                delay: 2 + index * 0.2
-                                            }
-                                        }
+                                                delay: 2 + index * 0.2,
+                                            },
+                                        },
                                     }}
-
                                 />
                             </div>
                         </div>
                     ))}
                 </div>
-
             </motion.div>
         </Section>
-    )
-}
-
+    );
+};
 
 const ProjectsSection = () => {
     const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
@@ -250,52 +246,87 @@ const ProjectsSection = () => {
     };
 
     return (
-        <Section >
-            <div className='flex w-full h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade'>
-                <button className='hover:text-indigo-600 transition-colors'
+        <Section>
+            <div className="flex w-screen h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade mx-auto">
+                <button
+                    className="hover:text-indigo-600 transition-colors"
                     onClick={previousProject}
                 >
                     ← Previous
                 </button>
-                <h2 className='text-5xl font-bold'>Projects</h2>
+                <h2 className="text-5xl font-bold">Projects</h2>
                 <button
-                    className='hover:text-indigo-600 transition-colors'
+                    className="hover:text-indigo-600 transition-colors"
                     onClick={nextProject}
                 >
                     Next →
                 </button>
             </div>
         </Section>
-    )
-}
-
-
-
+    );
+};
 
 const ContactSection = () => {
-
+    const [state, handleSubmit] = useForm("mayzgjbd");
     return (
-        
-            <section className="bg-white dark:bg-gray-900 rounded-3xl py-50 mb-20 flex items-center  mx-auto max-w-lg  mx-auto">
-                <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
-                    <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
-                    <form action="#" className="space-y-8">
-                        <div>
-                            <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                            <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required />
-                        </div>
-                        <div>
-                            <label for="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
-                            <input type="text" id="subject" className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you" required />
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                            <textarea id="message" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
-                        </div>
-                        <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
+        <Section>
+            <h2 className="text-3xl md:text-5xl font-bold">Contact me</h2>
+            <div className="mt-8 p-8 rounded-md bg-white bg-opacity-50 w-96 max-w-full">
+                {state.succeeded ? (
+                    <p className="text-gray-900 text-center">Thanks for your message !</p>
+                ) : (
+                    <form onSubmit={handleSubmit}>
+                        <label for="name" className="font-medium text-gray-900 block mb-1">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+                        />
+                        <label
+                            for="email"
+                            className="font-medium text-gray-900 block mb-1 mt-8"
+                        >
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+                        />
+                        <ValidationError
+                            className="mt-1 text-red-500"
+                            prefix="Email"
+                            field="email"
+                            errors={state.errors}
+                        />
+                        <label
+                            for="email"
+                            className="font-medium text-gray-900 block mb-1 mt-8"
+                        >
+                            Message
+                        </label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            className="h-32 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+                        />
+                        <ValidationError
+                            className="mt-1 text-red-500"
+                            errors={state.errors}
+                        />
+                        <button
+                            disabled={state.submitting}
+                            className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16 "
+                        >
+                            Submit
+                        </button>
                     </form>
-                </div>
-            </section>
+                )}
+            </div>
+        </Section>
     );
 };
