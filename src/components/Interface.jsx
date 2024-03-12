@@ -1,9 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { currentProjectAtom, projects } from "./Projects";
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useAtom } from 'jotai'
+import { currentProjectAtom, projects } from './Projects'
 import { ValidationError,useForm } from "@formspree/react";
-
 
 const skills = [
     {
@@ -26,7 +25,7 @@ const skills = [
         title: "3D Modelling",
         level: "40",
     },
-];
+]
 const languages = [
     {
         title: "3D Modelling",
@@ -44,14 +43,16 @@ const languages = [
         title: "3D Modelling",
         level: "40",
     },
-];
+]
+
+
+
 
 const Section = (props) => {
-    const { children, mobileTop } = props;
+    const { children, mobileTop } = props
 
     return (
-        <motion.section
-            className={`h-screen w-screen p-5 pt-0 max-w-screen-xl flex flex-col items-start 
+        <motion.section className={`h-screen w-screen p-5 pt-0 max-w-screen-xl mx-auto flex flex-col items-start 
         ${mobileTop ? "sm:justify-start" : "justify-center"}
         `}
             initial={{
@@ -63,54 +64,56 @@ const Section = (props) => {
                 y: 0,
                 transition: {
                     duration: 1,
-                    delay: 0.6,
+                    delay: 0.6
                 },
             }}
         >
             {children}
         </motion.section>
-    );
-};
+    )
+}
 
 export const Interface = (props) => {
-    const { setSection } = props;
+    const { setSection } = props
     return (
-        <div className="flex flex-col items-center w-full">
+        <div className='flex flex-col items-center w-full'>
             <AboutSection setSection={setSection} />
             <SkillsSection />
 
-            <div className="mt-24">
+            <div className='mt-24'>
                 <ProjectsSection />
             </div>
             <Section>
                 <ContactSection />
             </Section>
         </div>
-    );
-};
+    )
+}
 
 const AboutSection = (props) => {
-    const { setSection } = props;
+    const { setSection } = props
     return (
         <Section mobileTop>
-            <h1 className="text-5xl font-extrabold leading-snug mt-44 ">
+            <h1 className='text-5xl font-extrabold leading-snug mt-44 '>
                 Hi, I'm
                 <br />
-                <span className="bg-white px-1 italic">Siddhant Singh Karki</span>
+                <span className='bg-white px-1 italic'>Siddhant Singh Karki</span>
             </h1>
             <motion.p
-                className="text-lg text-gray-600 mt-4"
+                className='text-lg text-gray-600 mt-4'
                 initial={{
                     opacity: 0,
                     y: 25,
                 }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                }}
+                whileInView={
+                    {
+                        opacity: 1,
+                        y: 0,
+                    }
+                }
                 transition={{
                     duration: 1,
-                    delay: 1.5,
+                    delay: 1.5
                 }}
             >
                 Sugar-coated code:
@@ -124,10 +127,12 @@ const AboutSection = (props) => {
                     opacity: 0,
                     y: 25,
                 }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                }}
+                whileInView={
+                    {
+                        opacity: 1,
+                        y: 0,
+                    }
+                }
                 transition={{
                     duration: 1,
                     delay: 2,
@@ -136,8 +141,10 @@ const AboutSection = (props) => {
                 Contact Me
             </motion.button>
         </Section>
-    );
-};
+    )
+}
+
+
 
 const SkillsSection = () => {
     return (
@@ -147,8 +154,7 @@ const SkillsSection = () => {
                 <div className="mt-8 space-y-4">
                     {skills.map((skill, index) => (
                         <div className="w-64" key={index}>
-                            <motion.h3
-                                className="text-md font-bold text-gray-800"
+                            <motion.h3 className="text-md font-bold text-gray-800"
                                 initial={{
                                     opacity: 0,
                                 }}
@@ -159,28 +165,27 @@ const SkillsSection = () => {
                                     transition: {
                                         duration: 1,
                                         delay: 1 + index * 0.2,
-                                    },
+                                    }
                                 }}
-                            >
-                                {skill.title}
-                            </motion.h3>
+                            >{skill.title}</motion.h3>
                             <div className="h-3 w-full bg-gray-200 rounded-full mt-2">
                                 <motion.div
                                     className="h-full bg-indigo-500 rounded-full"
                                     style={{ width: `${skill.level}%` }}
                                     initial={{
                                         scaleX: 0,
-                                        originX: 0,
+                                        originX: 0
                                     }}
                                     variants={{
                                         visible: {
                                             scaleX: 1,
                                             transition: {
                                                 duration: 1,
-                                                delay: 1 + index * 0.2,
-                                            },
-                                        },
+                                                delay: 1 + index * 0.2
+                                            }
+                                        }
                                     }}
+
                                 />
                             </div>
                         </div>
@@ -190,8 +195,7 @@ const SkillsSection = () => {
                 <div className="mt-8 space-y-4">
                     {languages.map((lng, index) => (
                         <div className="w-64" key={index}>
-                            <motion.h3
-                                className="text-md font-bold text-gray-800"
+                            <motion.h3 className="text-md font-bold text-gray-800"
                                 initial={{
                                     opacity: 0,
                                 }}
@@ -202,37 +206,38 @@ const SkillsSection = () => {
                                     transition: {
                                         duration: 1,
                                         delay: 1 + index * 0.2,
-                                    },
+                                    }
                                 }}
-                            >
-                                {lng.title}
-                            </motion.h3>
+                            >{lng.title}</motion.h3>
                             <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                                 <motion.div
                                     className="h-full bg-indigo-500 rounded-full"
                                     style={{ width: `${lng.level}%` }}
                                     initial={{
                                         scaleX: 0,
-                                        originX: 0,
+                                        originX: 0
                                     }}
                                     variants={{
                                         visible: {
                                             scaleX: 1,
                                             transition: {
                                                 duration: 1,
-                                                delay: 2 + index * 0.2,
-                                            },
-                                        },
+                                                delay: 2 + index * 0.2
+                                            }
+                                        }
                                     }}
+
                                 />
                             </div>
                         </div>
                     ))}
                 </div>
+
             </motion.div>
         </Section>
-    );
-};
+    )
+}
+
 
 const ProjectsSection = () => {
     const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
@@ -246,25 +251,27 @@ const ProjectsSection = () => {
     };
 
     return (
-        <Section>
-            <div className="flex w-screen h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade mx-auto">
-                <button
-                    className="hover:text-indigo-600 transition-colors"
+        <Section >
+            <div className='flex w-full h-full gap-8 items-center justify-center mb-80 text-cyan-200 animate-fade'>
+                <button className='hover:text-indigo-600 transition-colors'
                     onClick={previousProject}
                 >
                     ← Previous
                 </button>
-                <h2 className="text-5xl font-bold">Projects</h2>
+                <h2 className='text-5xl font-bold'>Projects</h2>
                 <button
-                    className="hover:text-indigo-600 transition-colors"
+                    className='hover:text-indigo-600 transition-colors'
                     onClick={nextProject}
                 >
                     Next →
                 </button>
             </div>
         </Section>
-    );
-};
+    )
+}
+
+
+
 
 const ContactSection = () => {
     const [state, handleSubmit] = useForm("mayzgjbd");
