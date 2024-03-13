@@ -6,42 +6,45 @@ import { ValidationError,useForm } from "@formspree/react";
 
 const skills = [
     {
-        title: "Three.js / React Three Fiber",
-        level: "80",
-    },
-    {
         title: "React",
-        level: "90",
+        img: "/icons/react.svg" 
     },
     {
-        title: "NodeJS",
+        title: "NextJS",
+        img: "/icons/nextjs.svg", 
+    },
+    {
+        title: "JavaScript",
+        img: "/icons/javascript.svg", 
+    },
+    {
+        title: "Python",
         level: "80",
+        img: "/icons/python.svg", 
     },
     {
-        title: "TypeScript",
-        level: "80",
-    },
-    {
-        title: "3D Modelling",
+        title: "MongoDB",
         level: "40",
+        img: "/icons/mongodb.svg", 
+    },
+    {
+        title: "SQL",
+        level: "40",
+        img: "/icons/sql.svg", 
     },
 ]
-const languages = [
+const softwares = [
     {
-        title: "3D Modelling",
-        level: "40",
+        title: "VSCode",
+        img: "/icons/vscode.svg",
     },
     {
-        title: "3D Modelling",
-        level: "40",
+        title: "Canva",
+        img: "/icons/canva.svg",
     },
     {
-        title: "3D Modelling",
-        level: "40",
-    },
-    {
-        title: "3D Modelling",
-        level: "40",
+        title: "Illustrator",
+        img: "/icons/illustrator.svg",
     },
 ]
 
@@ -52,7 +55,7 @@ const Section = (props) => {
     const { children, mobileTop } = props
 
     return (
-        <motion.section className={`h-screen w-screen p-5 pt-0 max-w-screen-xl mx-auto flex flex-col items-start 
+        <motion.section className={`h-screen w-screen p-5 max-w-screen-xl mx-auto flex flex-col items-start 
         ${mobileTop ? "sm:justify-start" : "justify-center"}
         `}
             initial={{
@@ -94,13 +97,17 @@ const AboutSection = (props) => {
     const { setSection } = props
     return (
         <Section mobileTop>
-            <h1 className='text-5xl font-extrabold leading-snug mt-44 '>
+            <h1 className='text-5xl text-emerald-800 font-extrabold leading-snug mt-44 '>
                 Hi, I'm
                 <br />
-                <span className='bg-white px-1 italic'>Siddhant Singh Karki</span>
+                <span className='bg-emerald-400 px-1 italic'>Siddhant Singh Karki</span>
             </h1>
             <motion.p
-                className='text-lg text-gray-600 mt-4'
+                className='mt-12 font-inter text-xl text-emerald-600 bg-gray-600 bg-opacity-50  p-2 font-extrabold max-w-2xl rounded-2xl'
+                style={{
+                    backdropFilter: 'blur(5px)', // Apply backdrop blur directly using inline styles
+                    backgroundColor: 'rgba(159, 215, 219, 0.01)' // Adjust opacity of background to control blur intensity
+                }}
                 initial={{
                     opacity: 0,
                     y: 25,
@@ -116,13 +123,13 @@ const AboutSection = (props) => {
                     delay: 1.5
                 }}
             >
-                Sugar-coated code:
-                <br />
-                Crafting sweetness into digital magic
+                <div>
+                Full-Stack Software Engineer | Front-end and Back-end Development | Agile Methodologies | B.S. in IT Student
+                </div>
             </motion.p>
             <motion.button
                 onClick={() => setSection(3)}
-                className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+                className={`bg-emerald-600 text-teal-200 py-4 px-8 rounded-3xl font-bold text-lg mt-16 hover:bg-teal-200 hover:text-emerald-600 transition-colors duration-5`}
                 initial={{
                     opacity: 0,
                     y: 25,
@@ -149,89 +156,31 @@ const AboutSection = (props) => {
 const SkillsSection = () => {
     return (
         <Section>
+            {/* Skill Sect */}
             <motion.div whileInView={"visible"}>
-                <h2 className="text-2xl font-bold">Skills</h2>
-                <div className="mt-8 space-y-4">
+                <h3 className="text-4xl font-bold text-cyan-900 text-center mt-32">Skills</h3>
+                <div className=" mt-2 bg-emerald-600 bg-opacity-10 backdrop-blur-3xl p-8 rounded-3xl grid grid-cols-3 gap-8 ">
                     {skills.map((skill, index) => (
-                        <div className="w-64" key={index}>
-                            <motion.h3 className="text-md font-bold text-gray-800"
-                                initial={{
-                                    opacity: 0,
-                                }}
-                                variants={{
-                                    visible: {
-                                        opacity: 1,
-                                    },
-                                    transition: {
-                                        duration: 1,
-                                        delay: 1 + index * 0.2,
-                                    }
-                                }}
-                            >{skill.title}</motion.h3>
-                            <div className="h-3 w-full bg-gray-200 rounded-full mt-2">
-                                <motion.div
-                                    className="h-full bg-indigo-500 rounded-full"
-                                    style={{ width: `${skill.level}%` }}
-                                    initial={{
-                                        scaleX: 0,
-                                        originX: 0
-                                    }}
-                                    variants={{
-                                        visible: {
-                                            scaleX: 1,
-                                            transition: {
-                                                duration: 1,
-                                                delay: 1 + index * 0.2
-                                            }
-                                        }
-                                    }}
-
-                                />
-                            </div>
+                        <div className="w-content bg-sky-950 bg-opacity-30 backdrop-blur-3xl p-8 rounded-3xl shadow-lg shadow-sky-950 text-center flex flex-col items-center max-h-48 justify-center " key={index}>
+                            <img src={skill.img} alt="" className='w-14 h-14'/>
+                            <h3 className="mt-5 text-md text-center font-bold text-cyan-900"
+                            >{skill.title}</h3>
                         </div>
                     ))}
                 </div>
-                <h2 className="text-2xl font-bold mt-10">Languages</h2>
-                <div className="mt-8 space-y-4">
-                    {languages.map((lng, index) => (
-                        <div className="w-64" key={index}>
-                            <motion.h3 className="text-md font-bold text-gray-800"
-                                initial={{
-                                    opacity: 0,
-                                }}
-                                variants={{
-                                    visible: {
-                                        opacity: 1,
-                                    },
-                                    transition: {
-                                        duration: 1,
-                                        delay: 1 + index * 0.2,
-                                    }
-                                }}
-                            >{lng.title}</motion.h3>
-                            <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                                <motion.div
-                                    className="h-full bg-indigo-500 rounded-full"
-                                    style={{ width: `${lng.level}%` }}
-                                    initial={{
-                                        scaleX: 0,
-                                        originX: 0
-                                    }}
-                                    variants={{
-                                        visible: {
-                                            scaleX: 1,
-                                            transition: {
-                                                duration: 1,
-                                                delay: 2 + index * 0.2
-                                            }
-                                        }
-                                    }}
-
-                                />
-                            </div>
+                {/* Software Sect */}
+                <h3 className="text-4xl font-bold text-cyan-900 text-center mt-8">Software </h3>
+                <div className=" mt-8 backdrop-blur-3xl bg-emerald-600 bg-opacity-10  p-8 rounded-3xl grid grid-cols-3 gap-8 ">
+                    {softwares.map((software, index) => (
+                        <div className="w-content bg-sky-950 bg-opacity-30 backdrop-blur-3xl p-8 rounded-3xl shadow-lg shadow-sky-950 text-center flex flex-col items-center max-h-48 justify-center " key={index}>
+                            <img src={software.img} alt="" className='w-14 h-14'/>
+                            <h3 className="mt-5 text-md text-center font-bold text-cyan-900"
+                            >{software.title}</h3>
                         </div>
                     ))}
                 </div>
+                
+                
 
             </motion.div>
         </Section>

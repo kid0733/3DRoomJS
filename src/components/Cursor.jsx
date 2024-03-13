@@ -66,8 +66,8 @@ export const Cursor = () => {
             <div
                 className={`z-50 fixed -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition-transform
         ${hoverButton
-                        ? "bg-indigo-900 w-5 h-5"
-                        : "bg-transparent border-2 border-indigo-500 w-10 h-10 opacity-70"
+                        ? "bg-emerald-900 w-5 h-5"
+                        : "bg-transparent border-2 border-emerald-700 w-10 h-10 opacity-70"
                     }`}
                 ref={cursorOutline}
             ></div>
