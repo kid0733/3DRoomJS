@@ -31,7 +31,7 @@ export const LoadingScreen = (props) => {
                 <div className="opacity-40">SSK</div>
             </div>
         <p className="opacity-40">Please wait 3D Models Loading...</p>
-        <p className="opacity-40 mt-96">This website is best experience on a computer screen</p>
+        <p className="opacity-40 mt-96">This website is best experienced on a computer screen</p>
         </div>
         </>
     );
