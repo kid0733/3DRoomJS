@@ -29,6 +29,7 @@ export const LoadingScreen = (props) => {
                 </div>
                 <div className="opacity-40">SSK</div>
             </div>
+                <p className="opacity-40">Please wait 3D Models Loading...</p>
         </div>
     );
 };
