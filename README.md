@@ -17,9 +17,6 @@ This portfolio leverages a powerful stack of technologies to deliver an impressi
 - 🎬 **Framer Motion**: A popular animation library for React that allows for the creation of smooth and engaging animations and transitions.
 - 📦 **Webpack**: A module bundler that combines and optimizes the application's assets, ensuring fast loading times and efficient resource management.
 - 🚀 **Babel**: A JavaScript compiler that converts modern JavaScript code into a backwards-compatible version, enabling the use of the latest language features.
-- 🌐 **Axios**: A promise-based HTTP client for making API requests from the browser, simplifying the process of fetching data from external sources.
-- 📊 **Chart.js**: A flexible and responsive charting library that allows for the creation of interactive and visually appealing charts and graphs.
-- 🗃️ **Redux**: A predictable state container for managing application state, making it easier to handle complex data flows and maintain a consistent state across components.
 - 🚀 **GitHub Pages**: A static site hosting service provided by GitHub, used to deploy and host the portfolio website.
 
 ## 🚀 Getting Started
